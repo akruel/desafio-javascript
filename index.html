@@ -39,7 +39,9 @@
             id="search"
             type="text"
             class="validate"
-            onkeyup="findUsers(event)"
+            onkeyup="controlButton(event)"
+            onkeypress="findUsers(event)"
+            onkeydown="resetFields()"
           />
           <label for="search">BUSCA</label>
         </div>

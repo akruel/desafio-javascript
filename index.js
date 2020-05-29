@@ -37,17 +37,13 @@ resetFields = () => {
   foundUsers = [];
 };
 
-findUsers = (event) => {
-  controlButton();
-  resetFields();
+findUsers = (event) => {  
   if (
-    (event && event.keyCode == 13 && search != '') ||
-    (!event && search != '')
+    (event && event.keyCode == 13 && search.value != '') ||
+    (!event && search.value != '')
   ) {
-
     setLoader();
 
-    let foundUserAges = null;
     let username = search.value.toLowerCase();
 
     let foundUsers = users.filter((user) => {
@@ -61,13 +57,16 @@ findUsers = (event) => {
     let foundUsersFemale = foundUsers.filter((user) => {
       return user.gender === 'female';
     });
+ 
+    let foundUserAges = foundUsers.reduce((acc, cur) => {
+      return acc + cur.age;
+    }, 0);
 
     titleFoundUsers.innerHTML = `${foundUsers.length} usuário(s) encontrado(s)!`;
     titleUserStatic.innerHTML = `Estatísticas`;
 
     if (foundUsers.length > 0) {
       foundUsers.forEach((element) => {
-        foundUserAges += element.age;
         divFoundUsers.innerHTML += `${getUser(element)}`;
       });
 
@@ -82,9 +81,7 @@ findUsers = (event) => {
     } else {
       resetFields();
     }
-  } else {
-    resetFields();
-  }
+  } 
 };
 
 getUserStatic = (foundUsersMale, foundUsersFemale, foundUserAges, averAge) => {
