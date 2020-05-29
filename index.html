@@ -16,7 +16,25 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field col s1">
+          <div
+            id="loader"
+            class="preloader-wrapper small active loaderExcetute"
+          >
+            <div class="spinner-layer spinner-red-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-field col s7">
           <input
             id="search"
             type="text"
@@ -25,29 +43,22 @@
           />
           <label for="search">BUSCA</label>
         </div>
-        <!-- <div class="col s4">
-          <a
-            id="btnSearch"
-            class="waves-effect waves-light btn disabled"
-            onclick="findUsers()"
-            >BUSCAR</a
-          >
-        </div> -->
         <div class="input-field col s4">
           <button
             id="btnSearch"
             class="waves-effect waves-light btn disabled"
             onclick="findUsers()"
-            >BUSCAR
+          >
+            BUSCAR
           </button>
         </div>
       </div>
-      <div class="row">
-        <div class="col s6 content">
+      <div id="content" class="row">
+        <div class="col s6 userDetails">
           <h2 id="titleFoundUsers"></h2>
           <div class="container" id="foundUsers"></div>
         </div>
-        <div class="col s5 offset-s1 content">
+        <div class="col s5 offset-s1 userDetails">
           <h2 id="titleUserStatic"></h2>
           <div class="col s12" id="userStatic"></div>
         </div>

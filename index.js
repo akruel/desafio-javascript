@@ -5,8 +5,10 @@ var divFoundUsers = document.querySelector('#foundUsers');
 var divUserStatic = document.querySelector('#userStatic');
 var search = document.querySelector('#search');
 var btnSearch = document.querySelector('#btnSearch');
+var loader = document.querySelector('#loader');
 
 window.onload = () => {
+  loader.style.display = 'none';
   resetFields();
 
   const API_URL =
@@ -38,7 +40,13 @@ resetFields = () => {
 findUsers = (event) => {
   controlButton();
   resetFields();
-  if ((event && event.keyCode == 13 && search != '') || (!event && search != '')) {
+  if (
+    (event && event.keyCode == 13 && search != '') ||
+    (!event && search != '')
+  ) {
+
+    setLoader();
+
     let foundUserAges = null;
     let username = search.value.toLowerCase();
 
@@ -89,7 +97,7 @@ getUserStatic = (foundUsersMale, foundUsersFemale, foundUserAges, averAge) => {
 getUser = (user) => {
   return `<div class="row">
             <div col s12>
-               <div class="userDetails">
+               <div>
                   <img src=${user.picture.thumbnail} /> 
                   <div>${user.name}, ${user.age} anos </div>
                </div>
@@ -103,4 +111,12 @@ controlButton = () => {
   } else {
     btnSearch.className = 'waves-effect waves-light btn';
   }
+};
+
+setLoader = () => {
+  loader.style.display = '';
+
+  setInterval(() => {
+    loader.style.display = 'none';
+  }, 1500);
 };
