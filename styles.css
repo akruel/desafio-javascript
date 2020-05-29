@@ -1,0 +1,14 @@
+img {
+  border-radius: 50%;
+}
+
+.userDetails {
+  height: 50px;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.content {
+  border: 1px solid black;
+  /* border-radius: 5%;  */
+}
